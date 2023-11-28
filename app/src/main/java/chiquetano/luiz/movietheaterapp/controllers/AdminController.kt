@@ -9,27 +9,26 @@ import chiquetano.luiz.movietheaterapp.views.MainActivity
 
 class AdminController(private val mainActivity: MainActivity) {
 
-    var sessionDao = FakeFilmSessionDao()
 
     fun insertSession(filmSession: FilmSession, user: User) {
         if(user.userType == UserType.ADMIN)
-            sessionDao.create(filmSession)
+            FakeFilmSessionDao.create(filmSession)
     }
 
     fun getSession(id: Int, user: User) {
         if(user.userType == (UserType.ADMIN))
-            sessionDao.getOne(id)
+            FakeFilmSessionDao.getOne(id)
     }
 
     fun getSessions(user: User) {
         if(user.userType == (UserType.ADMIN))
-            sessionDao.getAll()
+            FakeFilmSessionDao.getAll()
 
     }
 
     fun removeSession(id: Int, user: User) {
         if(user.userType == (UserType.ADMIN))
-            sessionDao.delete(id)
+            FakeFilmSessionDao.delete(id)
 
     }
 }
