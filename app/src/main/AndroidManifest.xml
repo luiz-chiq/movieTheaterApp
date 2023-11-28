@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MovieTheaterApp"
         tools:targetApi="31">
         <activity
+            android:name=".views.AdminActivity"
+            android:exported="true"/>
+        <activity
             android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
