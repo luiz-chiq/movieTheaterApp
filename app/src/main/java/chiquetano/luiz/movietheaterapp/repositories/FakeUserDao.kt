@@ -6,6 +6,10 @@ import chiquetano.luiz.movietheaterapp.model.UserType
 class FakeUserDao() : GenericDao<User, String> {
     private val userMap = mutableMapOf<String, User>()
 
+    init{
+        userMap["admin"] = User("admin", "123", UserType.ADMIN)
+    }
+
     override fun create(user: User): String {
         userMap[user.username] = user
         return user.username
