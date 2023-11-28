@@ -25,10 +25,22 @@ class MainActivity : AppCompatActivity() {
         loginBt.setOnClickListener(View.OnClickListener {
             var valid = authController.logIn(usernameEt.text.toString(), passwordEt.text.toString())
             if(valid) {
-                val intent = Intent(this, AdminActivity::class.java)
+                val intent: Intent
+                if (authController.userIsAdmin())
+                    intent = Intent(this, AdminActivity::class.java)
+                else intent = Intent(this, ClientActivity::class.java)
                 startActivity(intent)
             }
-            showToast("Username ou senha inválidos")
+            else showToast("Username ou senha inválidos")
+        })
+
+        signupBt.setOnClickListener(View.OnClickListener {
+            var valid = authController.signIn(usernameEt.text.toString(), passwordEt.text.toString())
+            if(valid){
+                val intent = Intent(this, ClientActivity::class.java)
+                startActivity(intent)
+            }
+
         })
 
     }
