@@ -17,4 +17,10 @@ class ClientController (private val mainActivity: MainActivity) {
         }
     }
 
+    fun getSessions(user: User) {
+        if(user.userType == (UserType.CLIENT))
+            sessionDao.getAll()
+
+    }
+
 }
